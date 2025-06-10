@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Successful</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .font {
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .success-gif {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .welcome-text {
+            font-size: 1.2rem;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+
+        .user-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #666;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.3);
+        }
+
+        .celebration {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .user-details {
+                flex-direction: column;
+            }
+            
+            .detail-item {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="font">
+            <div class="celebration">🎉 🎊 ✨</div>
+            <h1>Login Successful!</h1>
+            
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTExZWJlNjExbDB4bnFhZnVoa2ZwY3hkcnY1cm93dXJqaGF3bm84dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ooyAxPcL4l2YbDvk4H/giphy.gif" 
+                 alt="Success Animation" class="success-gif">
+            
+            <div class="user-info">
+                <div class="welcome-text" id="welcomeMessage">환영합니다!</div>
+                
+                <div class="user-details">
+                    <div class="detail-item">
+                        <div class="detail-label">사용자명</div>
+                        <div id="currentUser">-</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">로그인 시간</div>
+                        <div id="loginTime">-</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="logout-btn" onclick="handleLogout()">
+                🚪 로그아웃
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='auth.js') }}"></script>
+    <script>
+        // 페이지 로드 시 로그인 상태 확인
+        window.addEventListener('load', function() {
+            if (!isLoggedIn()) {
+                window.location.href = '/login';
+                return;
+            }
+            
+            loadUserInfo();
+        });
+
+        // 사용자 정보 로드
+        function loadUserInfo() {
+            const currentUser = getCurrentUser();
+            
+            if (currentUser) {
+                document.getElementById('welcomeMessage').textContent = 
+                    `환영합니다, ${currentUser.username}님! 🎈`;
+                document.getElementById('currentUser').textContent = currentUser.username;
+                document.getElementById('loginTime').textContent = 
+                    new Date(currentUser.loginTime).toLocaleString('ko-KR');
+            }
+        }
+
+        // 로그아웃 처리
+        function handleLogout() {
+            if (confirm('정말 로그아웃 하시겠습니까? 🤔')) {
+                logoutUser();
+                
+                // 성공 메시지와 함께 리다이렉트
+                alert('로그아웃 되었습니다! 👋');
+                window.location.href = '/login';
+            }
+        }
+
+        // 축하 애니메이션 효과
+        function celebrateLogin() {
+            const celebration = document.querySelector('.celebration');
+            celebration.style.animation = 'bounce 2s infinite';
+        }
+
+        // CSS 애니메이션 추가
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-10px);
+                }
+                60% {
+                    transform: translateY(-5px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 페이지 로드 후 축하 애니메이션 실행
+        setTimeout(celebrateLogin, 500);
+    </script>
+</body>
+</html>
