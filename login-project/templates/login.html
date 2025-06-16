@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인</title>
+</head>
+<body>
+
+  <h2>로그인</h2>
+  <form id="loginForm">
+    <label>아이디: <input type="text" id="loginUsername" required></label><br><br>
+    <label>비밀번호: <input type="password" id="loginPassword" required></label><br><br>
+    <button type="submit">로그인</button>
+  </form>
+
+  <p>계정이 없으신가요? <a href="signup">회원가입</a></p>
+  <script>
+    // SHA-256 해시 함수
+    async function hashValue(value) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(value);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+  
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+  
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value;
+  
+      // 입력값 해싱
+      const hashedUsername = await hashValue(username);
+      const hashedPassword = await hashValue(password);
+  
+      // 로컬스토리지에서 사용자 정보 조회
+      const storedData = localStorage.getItem("user_" + hashedUsername);
+      if (!storedData) {
+        alert("존재하지 않는 사용자입니다.");
+        return;
+      }
+  
+      const userData = JSON.parse(storedData);
+  
+      if (userData.password === hashedPassword) {
+        alert("로그인 성공!");
+        window.location.href = "/welcome";  // /welcome 페이지로 이동
+      } else {
+        alert("비밀번호가 일치하지 않습니다.");
+      }
+    });
+  </script>
+
+</body>
+</html>
