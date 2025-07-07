@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+      <form id="loginForm">
+        <h2>로그인</h2>
+        <input type="text" id="loginUsername" placeholder="아이디" required>
+        <input type="password" id="loginPassword" placeholder="비밀번호" required>
+        <button type="submit">로그인</button>
+        <a href="signup">회원가입 하러가기</a>
+      </form>
+
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
