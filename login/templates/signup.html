@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <form id="signupForm">
+      <h2>회원가입</h2>
+      <input type="text" id="signupUsername" placeholder="아이디" required>
+      <input type="password" id="signupPassword" placeholder="비밀번호" required>
+      <input type="password" id="signupPasswordConfirm" placeholder="비밀번호 확인" required> <button type="submit">가입하기</button>
+      <a href="/">로그인으로 돌아가기</a>
+    </form>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
