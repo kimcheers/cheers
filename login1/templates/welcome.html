@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>환영합니다!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>환영합니다!</h1>
+        <p>성공적으로 로그인하셨습니다.</p>
+        <button id="logoutButton">로그아웃</button>
+        <p></p>
+        <a href="/exit" class="exit-link">회원 탈퇴</a> </div>
+
+    <script src="{{ url_for('static', filename='welcome.js') }}"></script> </body>
+</html>

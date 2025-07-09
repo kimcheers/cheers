@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원 탈퇴</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <form id="exitForm"> <h2>회원 탈퇴</h2>
+      <p>정말 회원 탈퇴를 하시겠습니까? 계정을 삭제하려면 비밀번호를 입력해주세요.</p>
+      <input type="password" id="exitPassword" placeholder="비밀번호 확인" required>
+      <button type="submit">계정 삭제</button> <a href="/welcome">돌아가기</a>
+    </form>
+
+    <script src="{{ url_for('static', filename='welcome.js') }}"></script>
+</body>
+</html>

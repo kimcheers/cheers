@@ -1,0 +1,121 @@
+/* static/style.css */
+
+/* 전체 페이지 기본 스타일 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e6e6fa; /* 연한 라벤더 계열 배경색 */
+    display: flex; /* Flexbox를 사용하여 콘텐츠 중앙 정렬 */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 뷰포트 전체 높이를 차지 */
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 폼 컨테이너 공통 스타일 (로그인/회원가입/회원탈퇴 폼) */
+#loginForm, #signupForm, #exitForm { /* ★ #exitForm 추가 ★ */
+    background-color: #ffffff; /* 흰색 배경 */
+    padding: 40px;
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    width: 100%;
+    max-width: 380px; /* 최대 너비 제한 */
+    box-sizing: border-box; /* 패딩과 보더가 너비에 포함되도록 */
+    text-align: center;
+}
+
+/* 제목 스타일 */
+#loginForm h2, #signupForm h2, #exitForm h2 { /* ★ #exitForm h2 추가 ★ */
+    color: #6a0dad; /* 보라색 계열 제목 색상 */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+/* 입력 필드 공통 스타일 */
+input[type="text"], input[type="password"] {
+    width: calc(100% - 22px); /* 전체 너비에서 패딩과 보더 제외 */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* 입력 필드 포커스 시 스타일 */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #6a0dad; /* 포커스 시 보라색 테두리 */
+    box-shadow: 0 0 8px rgba(106, 13, 173, 0.2); /* 그림자 효과 */
+    outline: none; /* 기본 아웃라인 제거 */
+}
+
+/* 버튼 공통 스타일 */
+button[type="submit"], .welcome-container button {
+    width: 100%; /* 기본적으로 100% 너비 */
+    padding: 12px 20px;
+    background-color: #6a0dad; /* 보라색 버튼 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 부드러운 전환 효과 */
+    margin-top: 10px;
+}
+
+/* welcome-container 내 버튼은 너비가 auto여야 하므로 별도로 재정의 */
+.welcome-container button {
+    width: auto;
+    padding: 12px 30px;
+}
+
+/* 버튼 호버 스타일 */
+#loginForm button[type="submit"]:hover,
+#signupForm button[type="submit"]:hover,
+.welcome-container button:hover,
+#exitForm button[type="submit"]:hover { /* ★ #exitForm button[type="submit"]:hover 추가 ★ */
+    background-color: #4a097a; /* 호버 시 진한 보라색 */
+    transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+}
+
+/* 링크 스타일 */
+#loginForm a, #signupForm a, #exitForm a { /* ★ #exitForm a 추가 ★ */
+    display: block; /* 블록 요소로 만들어 줄 바꿈 */
+    text-align: center;
+    margin-top: 25px;
+    color: #6a0dad; /* 보라색 링크 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+/* 링크 호버 스타일 */
+#loginForm a:hover, #signupForm a:hover, #exitForm a:hover { /* ★ #exitForm a:hover 추가 ★ */
+    color: #4a097a; /* 호버 시 진한 보라색 */
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+}
+
+/* 환영 페이지 컨테이너 스타일 */
+.welcome-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.welcome-container h1 {
+    color: #6a0dad;
+    margin-bottom: 20px;
+}
+
+.welcome-container p {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    color: #555;
+}
