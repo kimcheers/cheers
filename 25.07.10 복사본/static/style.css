@@ -1,0 +1,167 @@
+/* style.css */
+
+* {
+    margin: 0; /* 모든 요소의 외부 여백을 0으로 설정 */
+    padding: 0; /* 모든 요소의 내부 여백을 0으로 설정 */
+    box-sizing: border-box; /* 패딩과 보더가 요소의 전체 너비와 높이에 포함되도록 설정 (레이아웃 계산 용이) */
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* 기본 글꼴을 Arial 또는 시스템 기본 산세리프 글꼴로 설정 */
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); /* 배경을 파란색 계열의 그라데이션으로 설정 */
+    min-height: 100vh; /* 뷰포트 높이의 최소 100%를 차지하도록 설정 */
+    padding: 20px; /* 전체 바디에 20px의 패딩 적용 */
+}
+
+.container {
+    max-width: 1200px; /* 컨테이너의 최대 너비를 1200px로 설정 */
+    margin: 0 auto; /* 좌우 마진을 자동으로 설정하여 컨테이너를 가운데 정렬 */
+}
+
+.header {
+    text-align: center; /* 헤더 안의 텍스트를 가운데 정렬 */
+    color: white; /* 헤더 텍스트 색상을 흰색으로 설정 */
+    margin-bottom: 30px; /* 헤더 아래에 30px의 외부 여백 설정 */
+}
+
+.header h1 {
+    font-size: 2.5em; /* 제목의 글꼴 크기를 크게 설정 */
+    margin-bottom: 10px; /* 제목 아래에 10px의 외부 여백 설정 */
+}
+
+.header p {
+    font-size: 1.2em; /* 설명 문구의 글꼴 크기 설정 */
+    opacity: 0.9; /* 설명 문구의 투명도를 약간 낮춤 */
+}
+
+.update-time {
+    text-align: center; /* 업데이트 시간 텍스트를 가운데 정렬 */
+    color: white; /* 텍스트 색상을 흰색으로 설정 */
+    margin-bottom: 20px; /* 아래에 20px의 외부 여백 설정 */
+    font-size: 1.1em; /* 글꼴 크기 설정 */
+}
+
+.ocean-grid {
+    display: grid; /* 요소를 CSS 그리드 컨테이너로 설정 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 최소 280px 너비의 열을 자동으로 채우도록 설정 */
+    gap: 20px; /* 그리드 항목들 사이의 간격을 20px로 설정 */
+    margin-bottom: 30px; /* 그리드 아래에 30px의 외부 여백 설정 */
+}
+
+.ocean-card {
+    background: white; /* 카드 배경을 흰색으로 설정 */
+    border-radius: 15px; /* 카드 모서리를 둥글게 설정 */
+    padding: 25px; /* 카드 내부의 패딩 설정 */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* 카드에 그림자 효과 추가 */
+    transition: transform 0.3s ease; /* 호버 시 변형 효과에 부드러운 전환 적용 */
+}
+
+.ocean-card:hover {
+    transform: translateY(-5px); /* 호버 시 카드를 위로 5px 이동 */
+}
+
+.ocean-name {
+    font-size: 1.5em; /* 해역 이름 글꼴 크기 */
+    font-weight: bold; /* 글꼴 두껍게 */
+    margin-bottom: 15px; /* 아래 여백 */
+    color: #2d3436; /* 글꼴 색상 */
+}
+
+.temp-display {
+    font-size: 2.5em; /* 현재 수온 글꼴 크기 */
+    font-weight: bold; /* 글꼴 두껍게 */
+    margin-bottom: 10px; /* 아래 여백 */
+    color: #0984e3; /* 글꼴 색상 (파란색) */
+}
+
+.temp-info {
+    margin-bottom: 15px; /* 아래 여백 */
+    color: #636e72; /* 글꼴 색상 */
+}
+
+.health-score {
+    display: flex; /* 건강 점수 섹션을 flex 컨테이너로 설정 */
+    align-items: center; /* 자식 요소들을 세로 중앙에 정렬 */
+    gap: 10px; /* 자식 요소들 사이의 간격 설정 */
+    margin-bottom: 15px; /* 아래 여백 */
+}
+
+.score-circle {
+    width: 60px; /* 원의 너비 */
+    height: 60px; /* 원의 높이 */
+    border-radius: 50%; /* 둥근 원 형태로 만듦 */
+    display: flex; /* flex 컨테이너로 설정하여 내부 텍스트 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    color: white; /* 텍스트 색상 흰색 */
+    font-weight: bold; /* 글꼴 두껍게 */
+    font-size: 1.2em; /* 글꼴 크기 */
+}
+
+.status-badge {
+    padding: 8px 16px; /* 내부 패딩 */
+    border-radius: 20px; /* 둥근 모서리 */
+    color: white; /* 텍스트 색상 흰색 */
+    font-weight: bold; /* 글꼴 두껍게 */
+    font-size: 0.9em; /* 글꼴 크기 */
+}
+
+.status-message {
+    font-size: 1.1em; /* 글꼴 크기 */
+    margin-top: 10px; /* 위쪽 여백 */
+    padding: 10px; /* 내부 패딩 */
+    border-radius: 8px; /* 둥근 모서리 */
+    background: #f8f9fa; /* 배경색 */
+    color: #495057; /* 글꼴 색상 */
+}
+
+.refresh-btn {
+    display: block; /* 블록 레벨 요소로 설정하여 전체 너비 차지 */
+    margin: 20px auto; /* 위아래 20px, 좌우 자동으로 설정하여 가운데 정렬 */
+    padding: 15px 30px; /* 내부 패딩 */
+    background: white; /* 배경색 흰색 */
+    color: #0984e3; /* 텍스트 색상 파란색 */
+    border: none; /* 테두리 없음 */
+    border-radius: 25px; /* 둥근 모서리 */
+    font-size: 1.1em; /* 글꼴 크기 */
+    font-weight: bold; /* 글꼴 두껍게 */
+    cursor: pointer; /* 마우스 오버 시 포인터 모양으로 변경 */
+    transition: all 0.3s ease; /* 모든 속성 변경에 0.3초 부드러운 전환 적용 */
+}
+
+.refresh-btn:hover {
+    background: #0984e3; /* 호버 시 배경색 파란색으로 변경 */
+    color: white; /* 호버 시 텍스트 색상 흰색으로 변경 */
+    transform: scale(1.05); /* 호버 시 버튼을 약간 확대 */
+}
+
+.loading {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    color: white; /* 텍스트 색상 흰색 */
+    font-size: 1.2em; /* 글꼴 크기 */
+    margin: 20px 0; /* 위아래 20px 외부 여백 */
+}
+
+.error {
+    background: #ff7675; /* 에러 메시지 배경색 (빨간색) */
+    color: white; /* 에러 메시지 텍스트 색상 흰색 */
+    padding: 15px; /* 내부 패딩 */
+    border-radius: 10px; /* 둥근 모서리 */
+    margin: 20px 0; /* 위아래 20px 외부 여백 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) { /* 화면 너비가 768px 이하일 때 적용될 스타일 */
+    .header h1 {
+        font-size: 2em; /* 제목 글꼴 크기 줄임 */
+    }
+    
+    .ocean-grid {
+        grid-template-columns: 1fr; /* 그리드 열을 1개로 변경하여 세로로 배치 */
+    }
+    
+    .temp-display {
+        font-size: 2em; /* 현재 수온 글꼴 크기 줄임 */
+    }
+}
